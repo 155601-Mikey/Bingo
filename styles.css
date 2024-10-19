@@ -1,0 +1,94 @@
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: var(--header-bg);
+}
+
+h1 {
+    margin: 0;
+}
+
+#bingo-setup {
+    padding: 2rem;
+}
+
+#bingo-board {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.grid div {
+    width: 100px;
+    height: 100px;
+    border: 2px solid var(--border-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 1.2rem;
+    background-color: var(--card-bg);
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.grid div.crossed {
+    background-color: var(--cross-bg);
+    color: var(--cross-color);
+}
+
+#reset-bingo {
+    font-size: 2rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+#theme-toggle {
+    font-size: 2rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* Light theme */
+:root {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --header-bg: #f5f5f5;
+    --card-bg: #e0e0e0;
+    --cross-bg: #000000;
+    --cross-color: #ffffff;
+    --border-color: #000000;
+}
+
+/* Dark theme */
+body.dark-mode {
+    --bg-color: #121212;
+    --text-color: #ffffff;
+    --header-bg: #1f1f1f;
+    --card-bg: #333333;
+    --cross-bg: #ffffff;
+    --cross-color: #000000;
+    --border-color: #ffffff;
+}

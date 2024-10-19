@@ -15,14 +15,10 @@
 
     <section id="bingo-setup">
         <form id="bingo-form">
-            <label for="custom-text">Enter text for your Bingo card (comma separated):</label>
-            <textarea id="custom-text" placeholder="Text for each box, comma-separated" rows="3"></textarea>
-
-            <label for="custom-images">Add image URLs (comma separated, optional):</label>
-            <textarea id="custom-images" placeholder="Image URLs (optional), comma-separated" rows="3"></textarea>
-
-            <button type="submit" id="create-bingo">Create Bingo Card</button>
+            <label for="custom-images">Upload Images (optional):</label>
+            <input type="file" id="image-upload" multiple accept="image/*">
         </form>
+        <button id="reset-all" class="material-icons">clear_all</button>
     </section>
 
     <section id="bingo-board">

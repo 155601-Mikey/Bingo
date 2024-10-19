@@ -1,50 +1,73 @@
 // script.js
 document.addEventListener("DOMContentLoaded", () => {
-    const bingoForm = document.getElementById('bingo-form');
     const bingoGrid = document.getElementById('bingo-grid');
     const resetButton = document.getElementById('reset-bingo');
+    const resetAllButton = document.getElementById('reset-all');
     const themeToggle = document.getElementById('theme-toggle');
+    const imageUpload = document.getElementById('image-upload');
 
-    // Function to generate Bingo card
-    const generateBingoCard = (texts, images) => {
+    const gridSize = 5;
+    let customImages = [];
+
+    // Function to generate empty Bingo card
+    const generateEmptyBingoCard = () => {
         bingoGrid.innerHTML = '';  // Clear the grid
-        const items = texts.concat(images).slice(0, 25); // Max 25 items
-
-        items.forEach(item => {
+        for (let i = 0; i < gridSize * gridSize; i++) {
             const cell = document.createElement('div');
-            if (item.startsWith('http')) {
-                const img = document.createElement('img');
-                img.src = item;
-                img.alt = "Bingo image";
-                img.style.maxWidth = "100%";
-                img.style.maxHeight = "100%";
-                cell.appendChild(img);
-            } else {
-                cell.textContent = item;
-            }
-
-            // Add click event to toggle cross
+            cell.classList.add('empty');
+            
+            // Click to add text functionality
             cell.addEventListener('click', () => {
-                cell.classList.toggle('crossed');
+                if (cell.classList.contains('empty')) {
+                    const text = prompt('Enter text for this Bingo box:');
+                    if (text) {
+                        cell.textContent = text;
+                        cell.classList.remove('empty');
+                    }
+                }
             });
 
             bingoGrid.appendChild(cell);
+        }
+    };
+
+    // Handle custom image uploads
+    imageUpload.addEventListener('change', (e) => {
+        customImages = [];
+        const files = e.target.files;
+        Array.from(files).forEach(file => {
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                customImages.push(event.target.result);
+                placeImagesInGrid();
+            };
+            reader.readAsDataURL(file);
+        });
+    });
+
+    // Place uploaded images into empty grid cells
+    const placeImagesInGrid = () => {
+        const emptyCells = document.querySelectorAll('.grid div.empty');
+        customImages.forEach((image, index) => {
+            if (index < emptyCells.length) {
+                const imgElement = document.createElement('img');
+                imgElement.src = image;
+                emptyCells[index].appendChild(imgElement);
+                emptyCells[index].classList.remove('empty');
+            }
         });
     };
 
-    // Handle form submission
-    bingoForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const textInput = document.getElementById('custom-text').value.split(',');
-        const imageInput = document.getElementById('custom-images').value.split(',');
-        generateBingoCard(textInput, imageInput);
-    });
-
-    // Reset button
+    // Reset only marks
     resetButton.addEventListener('click', () => {
         document.querySelectorAll('.grid div').forEach(cell => {
             cell.classList.remove('crossed');
         });
+    });
+
+    // Reset the entire grid
+    resetAllButton.addEventListener('click', () => {
+        generateEmptyBingoCard();
     });
 
     // Theme toggle logic
@@ -61,4 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const darkMode = document.body.classList.toggle('dark-mode');
         applyTheme(darkMode);
     });
+
+    // Initialize with an empty Bingo card on page load
+    generateEmptyBingoCard();
 });

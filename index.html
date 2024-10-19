@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Bingo Card Maker</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Bingo Card Maker</h1>
+        <button id="theme-toggle" class="material-icons">dark_mode</button>
+    </header>
+
+    <section id="bingo-setup">
+        <form id="bingo-form">
+            <label for="custom-text">Enter text for your Bingo card (comma separated):</label>
+            <textarea id="custom-text" placeholder="Text for each box, comma-separated" rows="3"></textarea>
+
+            <label for="custom-images">Add image URLs (comma separated, optional):</label>
+            <textarea id="custom-images" placeholder="Image URLs (optional), comma-separated" rows="3"></textarea>
+
+            <button type="submit" id="create-bingo">Create Bingo Card</button>
+        </form>
+    </section>
+
+    <section id="bingo-board">
+        <div id="bingo-grid" class="grid"></div>
+        <button id="reset-bingo" class="material-icons">restart_alt</button>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>

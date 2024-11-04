@@ -88,3 +88,17 @@ document.addEventListener("DOMContentLoaded", () => {
     // Initialize with an empty Bingo card on page load
     generateEmptyBingoCard();
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Select all cells in the grid
+    const cells = document.querySelectorAll('.grid div');
+
+    // Add click event listener to each cell
+    cells.forEach(cell => {
+        cell.addEventListener('click', function() {
+            // Toggle the 'crossed' class on click
+            this.classList.toggle('crossed');
+        });
+    });
+});
+

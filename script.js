@@ -73,7 +73,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // Theme toggle logic
     const applyTheme = (darkMode) => {
         document.body.classList.toggle('dark-mode', darkMode);
-        themeToggle.textContent = darkMode ? 'light_mode' : 'dark_mode';
     };
 
     // Check system preference for dark mode

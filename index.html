@@ -5,12 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Custom Bingo Card Maker</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdn.lordicon.com/lordicon.js"></script> <!-- Add Lordicon script -->
 </head>
 <body>
     <header>
         <h1>Bingo Card Maker</h1>
-        <button id="theme-toggle" class="material-icons">dark_mode</button>
+        <!-- Replace Material Icon with Lordicon for theme toggle -->
+        <button id="theme-toggle">
+            <lord-icon
+                src="https://cdn.lordicon.com/ktsahwvc.json"
+                trigger="hover"
+                colors="primary:#ffffff"
+                style="width:50px;height:50px">
+            </lord-icon>
+        </button>
     </header>
 
     <section id="bingo-setup">
@@ -18,12 +26,28 @@
             <label for="custom-images">Upload Images (optional):</label>
             <input type="file" id="image-upload" multiple accept="image/*">
         </form>
-        <button id="reset-all" class="material-icons">clear_all</button>
+        <!-- Replace Material Icon with Lordicon -->
+        <button id="reset-all">
+            <lord-icon 
+                src="https://cdn.lordicon.com/wpyrrmcq.json" 
+                trigger="hover" 
+                colors="primary:#ffffff" 
+                style="width:50px;height:50px">
+            </lord-icon>
+        </button>
     </section>
 
     <section id="bingo-board">
         <div id="bingo-grid" class="grid"></div>
-        <button id="reset-bingo" class="material-icons">restart_alt</button>
+        <!-- Replace Material Icon with Lordicon -->
+        <button id="reset-bingo">
+            <lord-icon
+                src="https://cdn.lordicon.com/rsbokaso.json"
+                trigger="hover"
+                colors="primary:#ffffff"
+                style="width:50px;height:50px">
+            </lord-icon>
+        </button>
     </section>
 
     <script src="script.js"></script>
